@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="achBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#78350f"/>
+      <stop offset="50%" stop-color="#b45309"/>
+      <stop offset="100%" stop-color="#d97706"/>
+    </linearGradient>
+    <linearGradient id="cardGrad4" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.06"/>
+    </linearGradient>
+    <filter id="shadow4" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#451a03" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  <rect width="800" height="500" fill="url(#achBg)"/>
+  <circle cx="720" cy="90" r="170" fill="#fde68a" fill-opacity="0.15"/>
+  <circle cx="80" cy="380" r="140" fill="#fcd34d" fill-opacity="0.12"/>
+  <g filter="url(#shadow4)" transform="translate(180, 70)">
+    <rect width="440" height="340" rx="24" fill="url(#cardGrad4)" stroke="#ffffff" stroke-opacity="0.3" stroke-width="1.5"/>
+    <!-- Trophy Graphic -->
+    <g transform="translate(180, 35)">
+      <circle cx="40" cy="40" r="38" fill="#fef3c7" fill-opacity="0.2"/>
+      <!-- Trophy cup -->
+      <path d="M22 20 L58 20 C58 40 50 48 40 48 C30 48 22 40 22 20 Z" fill="#fbbf24"/>
+      <path d="M22 24 C14 24 12 32 18 36 C22 38 24 36 24 36" fill="none" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+      <path d="M58 24 C66 24 68 32 62 36 C58 38 56 36 56 36" fill="none" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+      <rect x="36" y="48" width="8" height="14" fill="#f59e0b"/>
+      <polygon points="26,62 54,62 50,68 30,68" fill="#d97706"/>
+    </g>
+    <rect x="130" y="130" width="180" height="16" rx="8" fill="#fde68a" fill-opacity="0.9"/>
+    <rect x="40" y="165" width="360" height="22" rx="6" fill="#ffffff" fill-opacity="0.95"/>
+    <rect x="70" y="198" width="300" height="18" rx="6" fill="#ffffff" fill-opacity="0.8"/>
+    <!-- Student detail mock -->
+    <circle cx="80" cy="250" r="18" fill="#ffffff" fill-opacity="0.3"/>
+    <rect x="115" y="240" width="160" height="12" rx="6" fill="#ffffff" fill-opacity="0.9"/>
+    <rect x="115" y="260" width="110" height="10" rx="5" fill="#fde68a" fill-opacity="0.7"/>
+    <rect x="150" y="295" width="140" height="30" rx="15" fill="#ffffff" fill-opacity="0.25"/>
+    <text x="220" y="315" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11" font-weight="700" text-anchor="middle" letter-spacing="1">PRESTASI SISWA</text>
+  </g>
+</svg>

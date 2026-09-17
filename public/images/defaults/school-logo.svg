@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
+  <defs>
+    <linearGradient id="logoBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e40af"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+  </defs>
+  <!-- Outer Shield -->
+  <path d="M100,12 C145,12 180,24 180,68 C180,132 100,188 100,188 C100,188 20,132 20,68 C20,24 55,12 100,12 Z" fill="url(#logoBg)"/>
+  <path d="M100,20 C138,20 170,30 170,70 C170,126 100,176 100,176 C100,176 30,126 30,70 C30,30 62,20 100,20 Z" fill="none" stroke="#ffffff" stroke-width="3" stroke-opacity="0.3"/>
+  
+  <!-- Inner Star & Book Emblem -->
+  <polygon points="100,42 105,58 122,58 108,68 113,84 100,74 87,84 92,68 78,58 95,58" fill="url(#goldGrad)"/>
+  
+  <!-- Open Book -->
+  <path d="M60,110 Q80,102 100,112 Q120,102 140,110 L140,138 Q120,130 100,140 Q80,130 60,138 Z" fill="#ffffff"/>
+  <path d="M100,112 L100,140" stroke="#1e40af" stroke-width="2.5"/>
+  <path d="M68,118 Q84,112 96,118" fill="none" stroke="#93c5fd" stroke-width="1.5"/>
+  <path d="M68,124 Q84,118 96,124" fill="none" stroke="#93c5fd" stroke-width="1.5"/>
+  <path d="M104,118 Q116,112 132,118" fill="none" stroke="#93c5fd" stroke-width="1.5"/>
+  <path d="M104,124 Q116,118 132,124" fill="none" stroke="#93c5fd" stroke-width="1.5"/>
+  
+  <!-- Torch Flame in center -->
+  <path d="M100,84 C106,94 108,102 100,108 C92,102 94,94 100,84 Z" fill="#f97316"/>
+  <circle cx="100" cy="100" r="3" fill="#fef08a"/>
+</svg>

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a"/>
+      <stop offset="50%" stop-color="#1d4ed8"/>
+      <stop offset="100%" stop-color="#3b82f6"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.05"/>
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#0f172a" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+  <rect width="800" height="500" fill="url(#bgGrad)"/>
+  <circle cx="720" cy="80" r="180" fill="#60a5fa" fill-opacity="0.15"/>
+  <circle cx="80" cy="420" r="140" fill="#93c5fd" fill-opacity="0.12"/>
+  <path d="M-50,200 Q200,100 450,260 T850,220 L850,500 L-50,500 Z" fill="#ffffff" fill-opacity="0.04"/>
+  <g filter="url(#shadow)" transform="translate(180, 70)">
+    <rect width="440" height="340" rx="24" fill="url(#cardGrad)" stroke="#ffffff" stroke-opacity="0.3" stroke-width="1.5"/>
+    <rect x="35" y="40" width="70" height="70" rx="18" fill="#ffffff" fill-opacity="0.2"/>
+    <path d="M55,65 L85,65 M55,75 L75,75 M55,85 L80,85" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+    <path d="M70,55 L70,50 C70,47 73,45 76,45 C79,45 82,47 82,50 L82,55" fill="none" stroke="#ffffff" stroke-width="2.5"/>
+    <!-- Speaker / Megaphone icon -->
+    <g transform="translate(52, 57)">
+      <path d="M6 10 L14 5 L14 21 L6 16 L2 16 L2 10 Z" fill="#ffffff"/>
+      <path d="M17 9 C19 11 19 15 17 17" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+      <path d="M20 6 C23 9 23 17 20 20" fill="none" stroke="#ffffff" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+    <rect x="125" y="52" width="130" height="14" rx="7" fill="#60a5fa" fill-opacity="0.9"/>
+    <rect x="125" y="76" width="220" height="10" rx="5" fill="#ffffff" fill-opacity="0.5"/>
+    <rect x="35" y="140" width="370" height="18" rx="6" fill="#ffffff" fill-opacity="0.95"/>
+    <rect x="35" y="172" width="310" height="18" rx="6" fill="#ffffff" fill-opacity="0.95"/>
+    <rect x="35" y="215" width="370" height="10" rx="5" fill="#ffffff" fill-opacity="0.5"/>
+    <rect x="35" y="235" width="340" height="10" rx="5" fill="#ffffff" fill-opacity="0.5"/>
+    <rect x="35" y="255" width="280" height="10" rx="5" fill="#ffffff" fill-opacity="0.5"/>
+    <rect x="35" y="288" width="120" height="28" rx="14" fill="#ffffff" fill-opacity="0.25"/>
+    <text x="95" y="306" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11" font-weight="700" text-anchor="middle" letter-spacing="1">PENGUMUMAN</text>
+  </g>
+</svg>
