@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Admin\AdminAchievementController;
 use App\Http\Controllers\Admin\AdminAnnouncementController;
 use App\Http\Controllers\Admin\AdminCategoryController;
@@ -39,7 +38,6 @@ Route::prefix('berita')->name('berita.')->group(function () {
 });
 
 Route::get('/prestasi', [PublicAchievementController::class, 'index'])->name('prestasi.index');
-Route::get('/tentang', [AboutController::class, 'index'])->name('tentang.index');
 
 /*
 |--------------------------------------------------------------------------

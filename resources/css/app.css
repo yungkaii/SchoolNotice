@@ -5,21 +5,41 @@
 @source '../../storage/framework/views/*.php';
 
 @theme {
-    --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-    --color-primary-50: #eff6ff;
-    --color-primary-100: #dbeafe;
-    --color-primary-500: #3b82f6;
-    --color-primary-600: #2563eb;
-    --color-primary-700: #1d4ed8;
-    --color-primary-800: #1e40af;
-    --color-primary-900: #1e3a8a;
+    --font-sans: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+
+    --color-tech-950: #070c18;
+    --color-tech-900: #0f172a;
+    --color-tech-850: #172033;
+    --color-tech-800: #1e293b;
+    --color-tech-700: #334155;
+
+    --color-cobalt-900: #0f274d;
+    --color-cobalt-800: #1e3a8a;
+    --color-cobalt-700: #1d4ed8;
+    --color-cobalt-600: #2563eb;
+    --color-cobalt-500: #3b82f6;
+    --color-cobalt-100: #dbeafe;
+    --color-cobalt-50: #eff6ff;
+
+    --color-safety-amber: #f59e0b;
+    --color-safety-amber-dark: #d97706;
+    --color-safety-amber-light: #fef3c7;
+
+    --color-safety-orange: #ea580c;
+    --color-safety-orange-light: #ffedd5;
 }
 
-/* Smooth reveal animation classes triggered by Intersection Observer */
+/* Base Smooth Scroll & Antialiasing */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Intersection Observer Scroll Reveal */
 .reveal-init {
     opacity: 0;
-    transform: translateY(24px);
-    transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     will-change: opacity, transform;
 }
 
@@ -28,25 +48,59 @@
     transform: translateY(0);
 }
 
-.reveal-delay-1 { transition-delay: 100ms; }
-.reveal-delay-2 { transition-delay: 200ms; }
-.reveal-delay-3 { transition-delay: 300ms; }
-.reveal-delay-4 { transition-delay: 400ms; }
+.reveal-delay-1 { transition-delay: 80ms; }
+.reveal-delay-2 { transition-delay: 160ms; }
+.reveal-delay-3 { transition-delay: 240ms; }
+.reveal-delay-4 { transition-delay: 320ms; }
 
-/* Custom smooth transitions */
-html {
-    scroll-behavior: smooth;
+/* Technical Grid & Dot Patterns (Vocational Aesthetics) */
+.bg-tech-grid {
+    background-image: 
+        linear-gradient(to right, rgba(15, 23, 42, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(15, 23, 42, 0.05) 1px, transparent 1px);
+    background-size: 28px 28px;
 }
 
-/* Glassmorphism helpers */
-.glass-nav {
-    background-color: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+.bg-tech-grid-dark {
+    background-image: 
+        linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+    background-size: 28px 28px;
 }
 
-.glass-card {
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+.bg-tech-dots {
+    background-image: radial-gradient(rgba(15, 23, 42, 0.09) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+.bg-tech-dots-dark {
+    background-image: radial-gradient(rgba(255, 255, 255, 0.09) 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+/* Technical Diagonal Hazard / Accent Strip */
+.bg-hazard-strip {
+    background: repeating-linear-gradient(
+        -45deg,
+        rgba(245, 158, 11, 0.15),
+        rgba(245, 158, 11, 0.15) 8px,
+        transparent 8px,
+        transparent 16px
+    );
+}
+
+/* Custom Scrollbar for Dense Tables and Navigation */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: rgba(15, 23, 42, 0.05);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(100, 116, 139, 0.4);
+    border-radius: 9999px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(100, 116, 139, 0.6);
 }

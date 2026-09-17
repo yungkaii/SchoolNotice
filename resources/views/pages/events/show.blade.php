@@ -4,144 +4,129 @@
 @section('meta_description', Str::limit(strip_tags($event->description), 150))
 
 @section('content')
-<!-- Breadcrumbs Bar -->
-<div class="bg-slate-50 border-b border-slate-200/80 py-4">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <nav class="flex items-center gap-2 text-xs font-semibold text-slate-500 overflow-x-auto">
-            <a href="{{ route('home') }}" class="hover:text-blue-600 transition-colors">Beranda</a>
-            <span>/</span>
-            <a href="{{ route('event.index') }}" class="hover:text-blue-600 transition-colors">Event</a>
-            <span>/</span>
-            <span class="text-slate-800 truncate max-w-xs sm:max-w-md">{{ $event->title }}</span>
-        </nav>
+<!-- Technical Breadcrumbs Bar -->
+<div class="bg-slate-100 border-b border-slate-200 py-3 font-mono text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center gap-2 overflow-x-auto">
+        <a href="{{ route('home') }}" class="hover:text-slate-900 transition-colors">BERANDA</a>
+        <span>/</span>
+        <a href="{{ route('event.index') }}" class="hover:text-slate-900 transition-colors">AGENDA</a>
+        <span>/</span>
+        <span class="text-slate-800 font-bold truncate max-w-xs sm:max-w-md uppercase">{{ $event->title }}</span>
     </div>
 </div>
 
 <!-- Main Event Section -->
 <div class="py-12 lg:py-16 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-            <!-- Left: Event Details -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            <!-- Left: Event Details (8 cols) -->
             <div class="lg:col-span-8 space-y-8">
-                <div>
-                    <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider {{ $event->status === 'upcoming' ? 'bg-teal-50 text-teal-700 border border-teal-200' : ($event->status === 'ongoing' ? 'bg-amber-50 text-amber-700 border border-amber-200' : 'bg-slate-100 text-slate-700 border border-slate-200') }}">
-                        Status: {{ $event->status === 'upcoming' ? 'Mendatang' : ($event->status === 'ongoing' ? 'Sedang Berlangsung' : 'Selesai') }}
-                    </span>
-                    <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight mt-3 leading-snug">
+                <div class="space-y-3">
+                    <div class="flex items-center gap-2 font-mono text-xs">
+                        <span class="px-2.5 py-1 rounded font-bold uppercase tracking-wider {{ $event->status === 'upcoming' ? 'bg-blue-100 text-blue-800 border border-blue-200' : ($event->status === 'ongoing' ? 'bg-amber-100 text-amber-800 border border-amber-200 animate-pulse' : 'bg-slate-100 text-slate-700 border border-slate-200') }}">
+                            STATUS: {{ $event->status === 'upcoming' ? 'Mendatang' : ($event->status === 'ongoing' ? 'Sedang Berlangsung' : 'Selesai') }}
+                        </span>
+                        <span class="text-slate-400">•</span>
+                        <span class="text-slate-500">KODE EVENT: EVT-{{ $event->id }}</span>
+                    </div>
+
+                    <h1 class="text-2xl sm:text-3xl lg:text-4xl font-black text-slate-950 tracking-tight leading-snug">
                         {{ $event->title }}
                     </h1>
                 </div>
 
                 <!-- Event Poster -->
-                <div class="rounded-3xl overflow-hidden bg-slate-100 border border-slate-200/80 shadow-md">
+                <div class="rounded-xl overflow-hidden bg-slate-100 border border-slate-300 shadow-sm">
                     <img src="{{ $event->image_url }}" alt="{{ $event->title }}" class="w-full max-h-[460px] object-cover">
                 </div>
 
-                <!-- Event Info Highlights Grid -->
-                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 p-6 rounded-3xl bg-slate-50 border border-slate-200/80">
-                    <div class="flex items-start gap-3.5">
-                        <div class="w-10 h-10 rounded-xl bg-teal-100 text-teal-700 flex items-center justify-center shrink-0">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" /></svg>
-                        </div>
-                        <div>
-                            <span class="block text-xs font-semibold text-slate-500">Tanggal Acara</span>
-                            <span class="block text-sm font-bold text-slate-900 mt-0.5">{{ $event->event_date->translatedFormat('l, d F Y') }}</span>
-                        </div>
+                <!-- Technical Specification Grid -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 p-6 rounded-xl bg-slate-50 border border-slate-300 font-mono">
+                    <div class="p-3 bg-white rounded-lg border border-slate-200">
+                        <span class="block text-[10px] uppercase text-slate-400 font-bold">Tanggal Pelaksanaan</span>
+                        <span class="block text-sm font-bold text-slate-900 mt-1 font-sans">{{ $event->event_date->translatedFormat('l, d F Y') }}</span>
                     </div>
 
-                    <div class="flex items-start gap-3.5">
-                        <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-700 flex items-center justify-center shrink-0">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>
-                        </div>
-                        <div>
-                            <span class="block text-xs font-semibold text-slate-500">Waktu Pelaksanaan</span>
-                            <span class="block text-sm font-bold text-slate-900 mt-0.5">{{ $event->formatted_time }}</span>
-                        </div>
+                    <div class="p-3 bg-white rounded-lg border border-slate-200">
+                        <span class="block text-[10px] uppercase text-slate-400 font-bold">Waktu & Jam</span>
+                        <span class="block text-sm font-bold text-slate-900 mt-1 font-sans">{{ $event->formatted_time }}</span>
                     </div>
 
-                    <div class="flex items-start gap-3.5">
-                        <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-700 flex items-center justify-center shrink-0">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-                        </div>
-                        <div>
-                            <span class="block text-xs font-semibold text-slate-500">Lokasi / Tempat</span>
-                            <span class="block text-sm font-bold text-slate-900 mt-0.5">{{ $event->location }}</span>
-                        </div>
+                    <div class="p-3 bg-white rounded-lg border border-slate-200">
+                        <span class="block text-[10px] uppercase text-slate-400 font-bold">Lokasi / Venue</span>
+                        <span class="block text-sm font-bold text-slate-900 mt-1 font-sans">{{ $event->location }}</span>
                     </div>
 
-                    <div class="flex items-start gap-3.5">
-                        <div class="w-10 h-10 rounded-xl bg-purple-100 text-purple-700 flex items-center justify-center shrink-0">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" /></svg>
-                        </div>
-                        <div>
-                            <span class="block text-xs font-semibold text-slate-500">Penanggung Jawab (PIC)</span>
-                            <span class="block text-sm font-bold text-slate-900 mt-0.5">{{ $event->person_in_charge }}</span>
-                        </div>
+                    <div class="p-3 bg-white rounded-lg border border-slate-200">
+                        <span class="block text-[10px] uppercase text-slate-400 font-bold">Penanggung Jawab (PIC)</span>
+                        <span class="block text-sm font-bold text-blue-700 mt-1 font-sans">{{ $event->person_in_charge }}</span>
                     </div>
                 </div>
 
-                <!-- Description -->
-                <div>
-                    <h3 class="text-xl font-bold text-slate-900 mb-4">Deskripsi Lengkap Acara</h3>
-                    <div class="prose prose-slate max-w-none text-slate-700 leading-relaxed space-y-4">
+                <!-- Description Body -->
+                <div class="space-y-4">
+                    <h3 class="text-xs font-mono font-bold uppercase tracking-wider text-slate-900 border-b border-slate-200 pb-2">
+                        Deskripsi & Rincian Agenda
+                    </h3>
+                    <div class="prose prose-slate max-w-none text-slate-700 leading-relaxed font-sans text-base space-y-4">
                         {!! nl2br(e($event->description)) !!}
                     </div>
                 </div>
+
+                <div class="pt-6 border-t border-slate-200 flex items-center justify-between font-mono text-xs">
+                    <span class="text-slate-500">SMKN 1 Ciomas Calendar System</span>
+                    <a href="{{ route('event.index') }}" class="text-blue-700 hover:text-blue-900 font-bold uppercase hover:underline">
+                        &larr; Kembali ke Kalender Agenda
+                    </a>
+                </div>
             </div>
 
-            <!-- Right Sidebar: Countdown & Other Events -->
-            <aside class="lg:col-span-4 space-y-8">
-                <!-- Live Countdown Box -->
-                <div class="p-6 rounded-3xl bg-gradient-to-br from-slate-900 to-slate-800 text-white shadow-xl" data-countdown-date="{{ $event->event_date->format('Y-m-d') }} {{ $event->start_time }}">
-                    <h4 class="text-xs font-bold uppercase tracking-wider text-teal-400 mb-1 cd-status">Hitung Mundur Waktu Acara</h4>
-                    <p class="text-xs text-slate-400 mb-5">Persiapkan diri Anda menyambut acara ini</p>
+            <!-- Right: Countdown Cockpit & Helpdesk (4 cols) -->
+            <div class="lg:col-span-4 space-y-6 lg:sticky lg:top-24">
+                <!-- Countdown Box (if upcoming) -->
+                @if($event->status === 'upcoming')
+                    <div class="p-6 rounded-xl bg-slate-950 text-white border border-slate-800 bg-tech-grid-dark space-y-4"
+                         data-countdown-date="{{ $event->event_date->format('Y-m-d') }} {{ $event->start_time }}">
+                        <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-amber-500 text-slate-950 uppercase tracking-wider">
+                            HITUNG MUNDUR ACARA
+                        </span>
+                        <h4 class="text-base font-bold text-white tracking-tight">Waktu Menuju Kegiatan</h4>
 
-                    <div class="grid grid-cols-4 gap-2 text-center">
-                        <div class="p-2.5 rounded-xl bg-slate-800/90 border border-slate-700">
-                            <span class="block text-xl font-black text-white cd-days">00</span>
-                            <span class="block text-[9px] uppercase font-bold text-slate-400 mt-0.5">Hari</span>
-                        </div>
-                        <div class="p-2.5 rounded-xl bg-slate-800/90 border border-slate-700">
-                            <span class="block text-xl font-black text-white cd-hours">00</span>
-                            <span class="block text-[9px] uppercase font-bold text-slate-400 mt-0.5">Jam</span>
-                        </div>
-                        <div class="p-2.5 rounded-xl bg-slate-800/90 border border-slate-700">
-                            <span class="block text-xl font-black text-white cd-minutes">00</span>
-                            <span class="block text-[9px] uppercase font-bold text-slate-400 mt-0.5">Menit</span>
-                        </div>
-                        <div class="p-2.5 rounded-xl bg-slate-800/90 border border-slate-700">
-                            <span class="block text-xl font-black text-teal-400 cd-seconds">00</span>
-                            <span class="block text-[9px] uppercase font-bold text-slate-400 mt-0.5">Detik</span>
+                        <div class="grid grid-cols-4 gap-2 text-center font-mono pt-2">
+                            <div class="px-2 py-3 rounded bg-slate-900 border border-slate-800">
+                                <span class="cd-days block text-xl font-black text-amber-400">00</span>
+                                <span class="text-[9px] uppercase tracking-wider text-slate-400 block mt-0.5">HARI</span>
+                            </div>
+                            <div class="px-2 py-3 rounded bg-slate-900 border border-slate-800">
+                                <span class="cd-hours block text-xl font-black text-white">00</span>
+                                <span class="text-[9px] uppercase tracking-wider text-slate-400 block mt-0.5">JAM</span>
+                            </div>
+                            <div class="px-2 py-3 rounded bg-slate-900 border border-slate-800">
+                                <span class="cd-minutes block text-xl font-black text-white">00</span>
+                                <span class="text-[9px] uppercase tracking-wider text-slate-400 block mt-0.5">MENIT</span>
+                            </div>
+                            <div class="px-2 py-3 rounded bg-slate-900 border border-slate-800">
+                                <span class="cd-seconds block text-xl font-black text-amber-400">00</span>
+                                <span class="text-[9px] uppercase tracking-wider text-slate-400 block mt-0.5">DETIK</span>
+                            </div>
                         </div>
                     </div>
-                </div>
+                @endif
 
-                <!-- Upcoming Events List -->
-                <div class="p-6 rounded-3xl bg-slate-50 border border-slate-200/80">
-                    <h3 class="text-base font-bold text-slate-900 mb-5 flex items-center gap-2">
-                        <span class="w-2 h-2 rounded-full bg-teal-500"></span>
-                        Event Mendatang Lainnya
-                    </h3>
-
-                    <div class="space-y-4">
-                        @forelse ($upcomingEvents as $item)
-                            <a href="{{ route('event.show', $item->slug) }}" class="block p-3.5 rounded-2xl bg-white border border-slate-200/60 hover:border-teal-300 hover:shadow-md transition-all group">
-                                <span class="text-[11px] font-bold text-teal-600">
-                                    {{ $item->event_date->translatedFormat('d M Y') }} • {{ substr($item->start_time, 0, 5) }} WIB
-                                </span>
-                                <h4 class="text-sm font-bold text-slate-800 group-hover:text-teal-700 transition-colors line-clamp-2 mt-1">
-                                    {{ $item->title }}
-                                </h4>
-                                <span class="text-[11px] text-slate-400 block mt-2 truncate">
-                                    Lokasi: {{ $item->location }}
-                                </span>
-                            </a>
-                        @empty
-                            <p class="text-xs text-slate-400">Tidak ada event mendatang lainnya.</p>
-                        @endforelse
+                <!-- Contact Coordinator Box -->
+                <div class="p-6 rounded-xl bg-slate-50 border border-slate-300 space-y-3 font-mono text-xs">
+                    <span class="text-[10px] font-bold uppercase text-slate-500 block">KONTAK KOORDINATOR</span>
+                    <h4 class="text-base font-bold text-slate-900 font-sans tracking-tight">{{ $event->person_in_charge }}</h4>
+                    <p class="text-slate-600 font-sans leading-relaxed text-xs">
+                        Untuk konfirmasi kepesertaan atau pertanyaan seputar teknis agenda kegiatan di SMKN 1 Ciomas.
+                    </p>
+                    <div class="pt-3 border-t border-slate-200 space-y-1 text-slate-600">
+                        <div>📍 {{ $event->location }}</div>
+                        <div>🕒 {{ $event->formatted_time }}</div>
+                        <div>📞 (0251) 8632-456</div>
                     </div>
                 </div>
-            </aside>
+            </div>
         </div>
     </div>
 </div>

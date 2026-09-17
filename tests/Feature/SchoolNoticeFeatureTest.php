@@ -78,15 +78,6 @@ class SchoolNoticeFeatureTest extends TestCase
         $response->assertSee('Prestasi');
     }
 
-    public function test_public_about_page_renders(): void
-    {
-        $response = $this->get('/tentang');
-        $response->assertStatus(200);
-        $response->assertSee('SMKN 1 CIOMAS');
-        $response->assertSee('Visi');
-        $response->assertSee('Misi');
-    }
-
     public function test_guest_is_redirected_from_admin_dashboard_to_login(): void
     {
         $response = $this->get('/admin/dashboard');

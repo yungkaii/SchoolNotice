@@ -1,28 +1,27 @@
 @extends('layouts.admin')
 
 @section('title', 'Tambah Administrator')
+@section('page_title', 'Tambah Administrator Baru')
+@section('page_subtitle', 'Berikan hak akses manajerial konten website SMKN 1 CIOMAS')
 
 @section('content')
-<div class="space-y-6 max-w-2xl mx-auto">
+<div class="space-y-6 max-w-2xl mx-auto font-sans">
     <!-- Header -->
     <div class="flex items-center justify-between">
-        <div>
-            <div class="flex items-center gap-2 text-xs font-semibold text-slate-500 uppercase tracking-wider mb-1">
-                <a href="{{ route('admin.users.index') }}" class="hover:text-blue-600 transition-colors">Admin</a>
-                <span>/</span>
-                <span>Tambah Baru</span>
-            </div>
-            <h1 class="text-2xl font-bold text-slate-900 tracking-tight">Tambah Administrator Baru</h1>
+        <div class="flex items-center gap-2 text-xs font-mono text-slate-500 uppercase tracking-wider">
+            <a href="{{ route('admin.users.index') }}" class="hover:text-amber-600 transition-colors">Admin</a>
+            <span>/</span>
+            <span class="text-amber-600 font-bold">Tambah Baru</span>
         </div>
-        <a href="{{ route('admin.users.index') }}" class="px-3.5 py-2 text-sm font-semibold text-slate-600 hover:text-slate-900 bg-white border border-slate-200 rounded-xl hover:bg-slate-50 transition-colors">
-            Kembali
+        <a href="{{ route('admin.users.index') }}" class="px-3.5 py-1.5 text-xs font-mono font-semibold uppercase tracking-wider text-slate-600 hover:text-slate-900 bg-white border border-slate-200 rounded-lg hover:bg-slate-50 transition-colors">
+            &larr; Kembali
         </a>
     </div>
 
     @if ($errors->any())
-        <div class="p-4 rounded-2xl bg-rose-50 border border-rose-200 text-rose-800 text-sm">
-            <div class="font-semibold mb-1">Harap periksa kesalahan berikut:</div>
-            <ul class="list-disc list-inside space-y-0.5 text-xs text-rose-700">
+        <div class="p-4 rounded-xl bg-rose-50 border border-rose-200 text-rose-800 text-xs font-mono">
+            <div class="font-bold mb-1 uppercase tracking-wider">Harap periksa kesalahan input:</div>
+            <ul class="list-disc list-inside space-y-0.5 text-rose-700 font-sans">
                 @foreach ($errors->all() as $error)
                     <li>{{ $error }}</li>
                 @endforeach
@@ -33,49 +32,49 @@
     <form action="{{ route('admin.users.store') }}" method="POST" class="space-y-6">
         @csrf
 
-        <div class="bg-white rounded-2xl border border-slate-200/80 p-5 sm:p-6 shadow-sm space-y-5">
+        <div class="bg-white rounded-xl border border-slate-200 p-5 sm:p-6 shadow-sm space-y-5">
             <div>
-                <label for="name" class="block text-sm font-semibold text-slate-800 mb-1.5">
+                <label for="name" class="block text-xs font-mono font-bold uppercase tracking-wider text-slate-700 mb-1.5">
                     Nama Lengkap <span class="text-rose-500">*</span>
                 </label>
-                <input type="text" name="name" id="name" value="{{ old('name') }}" required placeholder="Contoh: Admin Akademik" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all">
-                @error('name') <p class="text-xs text-rose-500 mt-1">{{ $message }}</p> @enderror
+                <input type="text" name="name" id="name" value="{{ old('name') }}" required placeholder="Contoh: Admin Pengelola IT" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-sans focus:outline-none focus:ring-1 focus:ring-amber-500 focus:border-amber-500 focus:bg-white transition-all">
+                @error('name') <p class="text-xs font-mono text-rose-500 mt-1">{{ $message }}</p> @enderror
             </div>
 
             <div>
-                <label for="email" class="block text-sm font-semibold text-slate-800 mb-1.5">
+                <label for="email" class="block text-xs font-mono font-bold uppercase tracking-wider text-slate-700 mb-1.5">
                     Alamat Email Login <span class="text-rose-500">*</span>
                 </label>
-                <input type="email" name="email" id="email" value="{{ old('email') }}" required placeholder="admin@sekolah.sch.id" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all">
-                @error('email') <p class="text-xs text-rose-500 mt-1">{{ $message }}</p> @enderror
+                <input type="email" name="email" id="email" value="{{ old('email') }}" required placeholder="admin@smkn1ciomas.sch.id" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-sans focus:outline-none focus:ring-1 focus:ring-amber-500 focus:border-amber-500 focus:bg-white transition-all">
+                @error('email') <p class="text-xs font-mono text-rose-500 mt-1">{{ $message }}</p> @enderror
             </div>
 
             <div>
-                <label for="password" class="block text-sm font-semibold text-slate-800 mb-1.5">
+                <label for="password" class="block text-xs font-mono font-bold uppercase tracking-wider text-slate-700 mb-1.5">
                     Kata Sandi (Password) <span class="text-rose-500">*</span>
                 </label>
-                <input type="password" name="password" id="password" required placeholder="Minimal 8 karakter" class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all">
-                @error('password') <p class="text-xs text-rose-500 mt-1">{{ $message }}</p> @enderror
+                <input type="password" name="password" id="password" required placeholder="Minimal 8 karakter" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-sans focus:outline-none focus:ring-1 focus:ring-amber-500 focus:border-amber-500 focus:bg-white transition-all">
+                @error('password') <p class="text-xs font-mono text-rose-500 mt-1">{{ $message }}</p> @enderror
             </div>
 
             <div>
-                <label for="role" class="block text-sm font-semibold text-slate-800 mb-1.5">
+                <label for="role" class="block text-xs font-mono font-bold uppercase tracking-wider text-slate-700 mb-1.5">
                     Hak Akses / Peran <span class="text-rose-500">*</span>
                 </label>
-                <select name="role" id="role" required class="w-full px-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-slate-700">
+                <select name="role" id="role" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-sans focus:outline-none focus:ring-1 focus:ring-amber-500 focus:border-amber-500 focus:bg-white transition-all text-slate-700">
                     <option value="admin" {{ old('role') === 'admin' ? 'selected' : '' }}>Super Admin (Akses Penuh)</option>
                     <option value="editor" {{ old('role') === 'editor' ? 'selected' : '' }}>Editor Konten (Pengumuman, Event, Berita, Prestasi)</option>
                 </select>
-                @error('role') <p class="text-xs text-rose-500 mt-1">{{ $message }}</p> @enderror
+                @error('role') <p class="text-xs font-mono text-rose-500 mt-1">{{ $message }}</p> @enderror
             </div>
         </div>
 
         <!-- Action Buttons -->
         <div class="flex items-center justify-end gap-3">
-            <a href="{{ route('admin.users.index') }}" class="px-5 py-2.5 rounded-xl border border-slate-200 text-sm font-semibold text-slate-600 hover:bg-slate-50 transition-colors">
+            <a href="{{ route('admin.users.index') }}" class="px-4 py-2 rounded-lg border border-slate-300 text-xs font-mono font-semibold uppercase tracking-wider text-slate-600 hover:bg-slate-50 transition-colors">
                 Batalkan
             </a>
-            <button type="submit" class="px-6 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold shadow-sm shadow-blue-600/30 transition-all hover:shadow-md">
+            <button type="submit" class="px-5 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-tech-950 text-xs font-mono font-bold uppercase tracking-wider shadow-sm transition-all">
                 Simpan Administrator
             </button>
         </div>

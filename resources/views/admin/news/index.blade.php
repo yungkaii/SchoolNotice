@@ -1,35 +1,37 @@
 @extends('layouts.admin')
 
 @section('title', 'Kelola Berita Sekolah')
+@section('page_title', 'Kelola Berita Sekolah')
+@section('page_subtitle', 'Publikasi warta berita, dokumentasi kegiatan, dan artikel SMKN 1 CIOMAS')
 
 @section('content')
-<div class="space-y-6">
+<div class="space-y-6 font-sans">
     <!-- Header Section -->
     <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <div>
-            <h1 class="text-2xl font-bold text-slate-900 tracking-tight">Kelola Berita Sekolah</h1>
-            <p class="text-sm text-slate-500 mt-1">Publikasikan artikel, liputan kegiatan, dan dokumentasi terkini sekolah.</p>
+            <h2 class="text-xl font-bold text-slate-900 tracking-tight">Daftar Warta Berita</h2>
+            <p class="text-xs text-slate-500 mt-0.5">Kelola artikel redaksi dan liputan kegiatan sekolah</p>
         </div>
-        <a href="{{ route('admin.berita.create') }}" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold rounded-xl shadow-sm shadow-blue-600/25 transition-all hover:shadow-md">
+        <a href="{{ route('admin.berita.create') }}" class="inline-flex items-center justify-center gap-2 px-4 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-mono font-bold uppercase tracking-wider rounded-lg shadow-sm transition-all">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
             </svg>
-            <span>Tulis Berita Baru</span>
+            <span>+ Tulis Berita Baru</span>
         </a>
     </div>
 
     <!-- Filters & Search Card -->
-    <div class="bg-white rounded-2xl p-4 sm:p-5 border border-slate-200/80 shadow-sm">
+    <div class="bg-white rounded-xl p-4 border border-slate-200 shadow-sm">
         <form action="{{ route('admin.berita.index') }}" method="GET" class="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div class="sm:col-span-2 relative">
-                <input type="text" name="q" value="{{ request('q') }}" placeholder="Cari judul berita atau artikel..." class="w-full pl-10 pr-4 py-2.5 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all">
-                <svg class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <input type="text" name="q" value="{{ request('q') }}" placeholder="Cari judul berita atau artikel..." class="w-full pl-9 pr-4 py-2 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 focus:bg-white transition-all">
+                <svg class="w-4 h-4 text-slate-400 absolute left-3 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                 </svg>
             </div>
 
             <div class="flex items-center gap-2">
-                <select name="category" class="flex-1 py-2.5 px-3 bg-slate-50 border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-white transition-all text-slate-700">
+                <select name="category" class="flex-1 py-2 px-3 bg-slate-50 border border-slate-200 rounded-lg text-xs focus:outline-none focus:ring-1 focus:ring-emerald-500 focus:border-emerald-500 focus:bg-white transition-all text-slate-700 font-sans">
                     <option value="">Semua Kategori</option>
                     @foreach($categories as $category)
                         <option value="{{ $category->id }}" {{ request('category') == $category->id ? 'selected' : '' }}>
@@ -37,11 +39,11 @@
                         </option>
                     @endforeach
                 </select>
-                <button type="submit" class="px-4 py-2.5 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-sm font-semibold transition-colors">
+                <button type="submit" class="px-4 py-2 bg-tech-950 hover:bg-tech-900 text-white rounded-lg text-xs font-mono font-bold uppercase tracking-wider transition-colors">
                     Filter
                 </button>
                 @if(request()->anyFilled(['q', 'category']))
-                    <a href="{{ route('admin.berita.index') }}" class="p-2.5 text-slate-400 hover:text-slate-600 rounded-xl border border-slate-200 hover:bg-slate-50" title="Reset Filter">
+                    <a href="{{ route('admin.berita.index') }}" class="p-2 text-slate-400 hover:text-slate-600 rounded-lg border border-slate-200 hover:bg-slate-50" title="Reset Filter">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                         </svg>
@@ -52,50 +54,50 @@
     </div>
 
     <!-- Table Card -->
-    <div class="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden">
+    <div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
         <div class="overflow-x-auto">
-            <table class="w-full text-left border-collapse">
+            <table class="w-full text-left border-collapse text-xs">
                 <thead>
-                    <tr class="bg-slate-50/75 border-b border-slate-200 text-[11px] font-bold uppercase tracking-wider text-slate-500">
-                        <th class="py-3.5 px-5">Artikel Berita</th>
-                        <th class="py-3.5 px-4">Kategori</th>
-                        <th class="py-3.5 px-4">Penulis</th>
-                        <th class="py-3.5 px-4">Tanggal Rilis</th>
-                        <th class="py-3.5 px-5 text-right">Aksi</th>
+                    <tr class="bg-slate-50/80 border-b border-slate-200 text-[10px] font-mono font-bold uppercase tracking-wider text-slate-500">
+                        <th class="py-3 px-4">Artikel Berita</th>
+                        <th class="py-3 px-3">Kategori</th>
+                        <th class="py-3 px-3">Penulis</th>
+                        <th class="py-3 px-3">Tanggal Rilis</th>
+                        <th class="py-3 px-4 text-right">Aksi</th>
                     </tr>
                 </thead>
-                <tbody class="divide-y divide-slate-100 text-sm">
+                <tbody class="divide-y divide-slate-100">
                     @forelse($news as $item)
-                        <tr class="hover:bg-slate-50/60 transition-colors">
-                            <td class="py-4 px-5">
-                                <div class="flex items-center gap-3.5">
-                                    <img src="{{ $item->image_url }}" alt="{{ $item->title }}" class="w-12 h-12 rounded-xl object-cover border border-slate-200 flex-shrink-0">
+                        <tr class="hover:bg-slate-50/70 transition-colors">
+                            <td class="py-3.5 px-4">
+                                <div class="flex items-center gap-3">
+                                    <img src="{{ $item->image_url }}" alt="{{ $item->title }}" class="w-10 h-10 rounded-lg object-cover border border-slate-200 shrink-0">
                                     <div class="min-w-0">
-                                        <h4 class="font-semibold text-slate-900 truncate max-w-xs md:max-w-md">{{ $item->title }}</h4>
-                                        <p class="text-xs text-slate-400 mt-0.5 truncate max-w-xs">{{ Str::limit(strip_tags($item->content), 60) }}</p>
+                                        <h4 class="font-bold text-slate-900 truncate max-w-xs md:max-w-md">{{ $item->title }}</h4>
+                                        <p class="text-[11px] text-slate-400 mt-0.5 truncate max-w-xs">{{ Str::limit(strip_tags($item->content), 60) }}</p>
                                     </div>
                                 </div>
                             </td>
-                            <td class="py-4 px-4 whitespace-nowrap">
-                                <span class="inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-semibold bg-blue-50 text-blue-700 border border-blue-100">
+                            <td class="py-3.5 px-3 whitespace-nowrap">
+                                <span class="inline-flex items-center px-2 py-0.5 rounded-xs text-[11px] font-mono font-semibold bg-slate-100 text-slate-700 border border-slate-200">
                                     {{ $item->category->name ?? 'Warta Sekolah' }}
                                 </span>
                             </td>
-                            <td class="py-4 px-4 whitespace-nowrap">
+                            <td class="py-3.5 px-3 whitespace-nowrap">
                                 <div class="flex items-center gap-2 text-xs text-slate-700 font-medium">
-                                    <span class="w-6 h-6 rounded-full bg-slate-100 text-slate-600 flex items-center justify-center font-bold text-[10px]">
-                                        {{ substr($item->author->name ?? 'Admin', 0, 1) }}
+                                    <span class="w-5 h-5 rounded-md bg-tech-950 text-amber-400 font-mono font-bold flex items-center justify-center text-[10px]">
+                                        {{ substr($item->author->name ?? 'A', 0, 1) }}
                                     </span>
                                     <span>{{ $item->author->name ?? 'Admin Sekolah' }}</span>
                                 </div>
                             </td>
-                            <td class="py-4 px-4 whitespace-nowrap">
-                                <div class="text-xs font-medium text-slate-700">{{ $item->published_at->format('d M Y') }}</div>
-                                <div class="text-[11px] text-slate-400 mt-0.5">{{ $item->reading_time }} mnt baca</div>
+                            <td class="py-3.5 px-3 whitespace-nowrap">
+                                <div class="text-xs font-mono font-medium text-slate-700">{{ $item->published_at->format('d M Y') }}</div>
+                                <div class="text-[10px] font-mono text-slate-400 mt-0.5">{{ $item->reading_time }} mnt baca</div>
                             </td>
-                            <td class="py-4 px-5 whitespace-nowrap text-right">
-                                <div class="flex items-center justify-end gap-1.5">
-                                    <a href="{{ route('berita.show', $item->slug) }}" target="_blank" class="p-1.5 text-slate-400 hover:text-blue-600 hover:bg-blue-50 rounded-lg transition-colors" title="Lihat di Web">
+                            <td class="py-3.5 px-4 whitespace-nowrap text-right">
+                                <div class="flex items-center justify-end gap-1">
+                                    <a href="{{ route('berita.show', $item->slug) }}" target="_blank" class="p-1.5 text-slate-400 hover:text-emerald-600 hover:bg-emerald-50 rounded-lg transition-colors" title="Lihat di Web">
                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
@@ -117,12 +119,12 @@
                     @empty
                         <tr>
                             <td colspan="5" class="py-12 px-4 text-center">
-                                <div class="w-12 h-12 rounded-2xl bg-slate-100 text-slate-400 flex items-center justify-center mx-auto mb-3">
+                                <div class="w-12 h-12 rounded-xl bg-slate-100 text-slate-400 flex items-center justify-center mx-auto mb-3">
                                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
                                     </svg>
                                 </div>
-                                <h4 class="font-semibold text-slate-800">Tidak ada berita ditemukan</h4>
+                                <h4 class="font-bold text-slate-800">Tidak ada berita ditemukan</h4>
                                 <p class="text-xs text-slate-500 mt-1">Coba sesuaikan kata kunci pencarian atau filter kategori Anda.</p>
                             </td>
                         </tr>
@@ -132,7 +134,7 @@
         </div>
 
         @if($news->hasPages())
-            <div class="px-5 py-4 border-t border-slate-100">
+            <div class="px-4 py-3 border-t border-slate-100">
                 {{ $news->links() }}
             </div>
         @endif
