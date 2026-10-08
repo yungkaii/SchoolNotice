@@ -1,8 +1,8 @@
 <aside id="admin-sidebar" class="fixed inset-y-0 left-0 z-40 w-64 bg-tech-950 text-slate-300 flex flex-col transition-transform duration-300 transform -translate-x-full lg:translate-x-0 border-r border-tech-800 shadow-2xl lg:shadow-none font-sans">
     <!-- Sidebar Header -->
     <div class="h-20 flex items-center gap-3 px-5 border-b border-tech-800 bg-tech-950/90">
-        <div class="w-10 h-10 rounded-lg bg-tech-900 border border-tech-800 flex items-center justify-center text-amber-400 font-mono font-bold text-sm shadow-inner shrink-0">
-            SN
+        <div class="w-10 h-10 rounded-lg bg-white p-1 flex items-center justify-center shadow-inner shrink-0">
+            <img src="{{ asset('images/logoskanic2.png') }}" alt="Logo SMKN 1 Ciomas" class="w-full h-full object-contain">
         </div>
         <div class="min-w-0 flex-1">
             <span class="block text-sm font-bold text-white tracking-tight truncate">School<span class="text-amber-400">Notice</span></span>

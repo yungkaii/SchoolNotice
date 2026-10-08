@@ -8,7 +8,7 @@
     <title>@yield('title', 'Admin Panel') | SchoolNotice SMKN 1 CIOMAS</title>
 
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="{{ asset('images/defaults/school-logo.svg') }}">
+    <link rel="icon" type="image/png" href="{{ asset('images/logoskanic2.png') }}">
 
     <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">

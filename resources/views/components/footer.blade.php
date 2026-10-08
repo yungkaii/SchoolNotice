@@ -4,10 +4,8 @@
             <!-- Col 1: School Identity (5 cols) -->
             <div class="lg:col-span-5 space-y-4">
                 <div class="flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-lg bg-blue-700 text-white flex items-center justify-center font-black border border-blue-500 shadow-sm">
-                        <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                        </svg>
+                    <div class="w-11 h-11 rounded-lg bg-white p-1 flex items-center justify-center shadow-md shrink-0">
+                        <img src="{{ asset('images/logoskanic2.png') }}" alt="Logo SMKN 1 Ciomas" class="w-full h-full object-contain">
                     </div>
                     <div>
                         <div class="flex items-center gap-2">
@@ -36,11 +34,10 @@
                     <span>Konsentrasi Keahlian</span>
                 </h4>
                 <ul class="space-y-2 text-xs text-slate-400 font-medium">
-                    <li class="hover:text-white transition-colors">• Rekayasa Perangkat Lunak (RPL)</li>
-                    <li class="hover:text-white transition-colors">• Teknik Komputer & Jaringan (TKJ)</li>
-                    <li class="hover:text-white transition-colors">• Desain Komunikasi Visual (DKV)</li>
+                    <li class="hover:text-white transition-colors">• Pengembangan Perangkat Lunak dan Gim (PPLG)</li>
+                    <li class="hover:text-white transition-colors">• Broadcasting dan Perfilman (BCF)</li>
                     <li class="hover:text-white transition-colors">• Animasi Digital 2D & 3D</li>
-                    <li class="hover:text-white transition-colors">• Teknik Kendaraan Ringan Otomotif (TKRO)</li>
+                    <li class="hover:text-white transition-colors">• Teknik Otomotif</li>
                     <li class="hover:text-white transition-colors">• Teknik Pengelasan & Fabrikasi Logam</li>
                 </ul>
             </div>
@@ -68,7 +65,7 @@
                 </h4>
                 <div class="space-y-2.5 text-xs text-slate-400 leading-relaxed">
                     <p>
-                        <strong class="text-slate-300 block">Kampus SMKN 1 Ciomas:</strong>
+                        <strong class="text-slate-300 block">SMKN 1 Ciomas:</strong>
                         Jl. Raya Laladon, Ciomas, Kec. Ciomas, Kab. Bogor, Jawa Barat 16610
                     </p>
                     <p class="font-mono">
@@ -87,10 +84,6 @@
         <!-- Bottom Legal & Architecture Metadata -->
         <div class="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] font-mono text-slate-500">
             <p>&copy; {{ date('Y') }} SMKN 1 CIOMAS — SchoolNotice Platform. Seluruh Hak Cipta Dilindungi.</p>
-            <p class="flex items-center gap-2">
-                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                <span>LARAVEL 13 • TAILWIND V4 • MYSQL ENTERPRISE</span>
-            </p>
         </div>
     </div>
 </footer>

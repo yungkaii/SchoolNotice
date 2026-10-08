@@ -68,29 +68,29 @@
         @if ($announcements->count() > 0)
             <div class="space-y-4">
                 @foreach ($announcements as $announcement)
-                    <article class="bg-white rounded-xl border border-slate-200 hover:border-slate-400 p-6 sm:p-7 transition-all shadow-sm flex flex-col md:flex-row gap-6 items-start justify-between">
+                    <article class="bg-white rounded-2xl border border-slate-200/90 hover:border-blue-500 hover:shadow-lg p-6 sm:p-7 transition-all duration-300 hover-lift flex flex-col md:flex-row gap-6 items-start justify-between group">
                         <div class="flex items-start gap-5 min-w-0 flex-1">
                             <!-- Technical Date Stamp Box -->
-                            <div class="w-16 h-16 rounded-lg bg-slate-900 text-white flex flex-col items-center justify-center text-center shrink-0 font-mono border border-slate-800">
+                            <div class="w-16 h-16 rounded-xl bg-slate-950 text-white flex flex-col items-center justify-center text-center shrink-0 font-mono border border-slate-800 shadow-sm group-hover:border-blue-400 transition-colors">
                                 <span class="text-xl font-black leading-none">{{ $announcement->published_at->format('d') }}</span>
                                 <span class="text-[10px] uppercase font-bold text-amber-400 mt-1">{{ $announcement->published_at->format('M Y') }}</span>
                             </div>
 
                             <div class="space-y-2 min-w-0 flex-1">
                                 <div class="flex flex-wrap items-center gap-2 text-xs font-mono">
-                                    <span class="px-2 py-0.5 rounded bg-blue-50 text-blue-700 font-bold border border-blue-200 uppercase text-[11px]">
+                                    <span class="px-2.5 py-0.5 rounded-full bg-blue-50 text-blue-700 font-bold border border-blue-200/60 uppercase text-[11px]">
                                         {{ $announcement->category->name ?? 'Umum' }}
                                     </span>
-                                    <span class="text-slate-400">•</span>
+                                    <span class="text-slate-300">•</span>
                                     <span class="text-slate-500">RILIS: {{ $announcement->published_at->translatedFormat('l, d F Y') }}</span>
                                     @if ($announcement->expired_at)
-                                        <span class="text-slate-400">•</span>
+                                        <span class="text-slate-300">•</span>
                                         <span class="text-amber-700 font-medium">Batas: {{ $announcement->expired_at->format('d M Y') }}</span>
                                     @endif
                                 </div>
 
                                 <h2 class="text-lg sm:text-xl font-bold text-slate-950 leading-snug">
-                                    <a href="{{ route('pengumuman.show', $announcement->slug) }}" class="hover:text-blue-700 transition-colors">
+                                    <a href="{{ route('pengumuman.show', $announcement->slug) }}" class="group-hover:text-blue-700 transition-colors">
                                         {{ $announcement->title }}
                                     </a>
                                 </h2>
@@ -102,10 +102,10 @@
                         </div>
 
                         <div class="flex md:flex-col items-center md:items-end justify-between w-full md:w-auto pt-4 md:pt-0 border-t md:border-t-0 border-slate-100 shrink-0 gap-3">
-                            <span class="px-2.5 py-1 rounded text-[11px] font-mono font-bold uppercase {{ $announcement->status === 'published' ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-slate-100 text-slate-600 border border-slate-200' }}">
+                            <span class="px-2.5 py-1 rounded-full text-[11px] font-mono font-bold uppercase {{ $announcement->status === 'published' ? 'bg-emerald-50 text-emerald-700 border border-emerald-200' : 'bg-slate-100 text-slate-600 border border-slate-200' }}">
                                 {{ $announcement->status }}
                             </span>
-                            <a href="{{ route('pengumuman.show', $announcement->slug) }}" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg text-xs font-mono font-bold uppercase text-white bg-slate-900 hover:bg-blue-700 transition-colors">
+                            <a href="{{ route('pengumuman.show', $announcement->slug) }}" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl text-xs font-mono font-bold uppercase text-white bg-slate-900 group-hover:bg-blue-600 transition-colors shadow-2xs">
                                 <span>BACA DOKUMEN</span>
                                 <span>&rarr;</span>
                             </a>

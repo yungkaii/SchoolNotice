@@ -217,4 +217,36 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }
     });
+
+    // 10. Real-time Live School Clock
+    const liveClockEl = document.getElementById('live-school-clock');
+    if (liveClockEl) {
+        const updateClock = () => {
+            const now = new Date();
+            const hours = String(now.getHours()).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            liveClockEl.textContent = `${hours}:${minutes}:${seconds} WIB`;
+        };
+        updateClock();
+        setInterval(updateClock, 1000);
+    }
+
+    // 11. Floating Back-to-Top Button
+    const backToTopBtn = document.getElementById('back-to-top-btn');
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 400) {
+                backToTopBtn.classList.remove('opacity-0', 'pointer-events-none', 'translate-y-4');
+                backToTopBtn.classList.add('opacity-100', 'translate-y-0');
+            } else {
+                backToTopBtn.classList.add('opacity-0', 'pointer-events-none', 'translate-y-4');
+                backToTopBtn.classList.remove('opacity-100', 'translate-y-0');
+            }
+        });
+
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 });

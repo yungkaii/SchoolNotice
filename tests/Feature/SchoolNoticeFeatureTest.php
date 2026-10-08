@@ -27,6 +27,21 @@ class SchoolNoticeFeatureTest extends TestCase
         $response->assertSee('School');
         $response->assertSee('Notice');
         $response->assertSee('SMKN 1 CIOMAS');
+        $response->assertDontSee('LOGIN PETUGAS');
+    }
+
+    public function test_news_ticker_running_text_renders_on_public_pages(): void
+    {
+        $response = $this->get('/');
+
+        $response->assertStatus(200);
+        $response->assertSee('WARTA TERKINI');
+        $response->assertSee('ticker-track');
+
+        $latestNews = News::published()->first();
+        if ($latestNews) {
+            $response->assertSee($latestNews->title);
+        }
     }
 
     public function test_public_announcements_index_and_detail_render(): void
@@ -76,6 +91,26 @@ class SchoolNoticeFeatureTest extends TestCase
         $response = $this->get('/prestasi');
         $response->assertStatus(200);
         $response->assertSee('Prestasi');
+    }
+
+    public function test_login_page_renders_without_navbar_and_footer(): void
+    {
+        $response = $this->get('/login');
+        $response->assertStatus(200);
+        $response->assertSee('Admin Console Login');
+        $response->assertSee('KEMBALI KE BERANDA');
+        $response->assertDontSee('SISTEM INFORMASI AKTIF');
+        $response->assertDontSee('Kanal Utama');
+        $response->assertDontSee('KONSENTRASI KEAHLIAN');
+    }
+
+    public function test_admin_login_url_renders_login_page(): void
+    {
+        $response = $this->get('/admin/login');
+        $response->assertStatus(200);
+        $response->assertSee('Admin Console Login');
+        $response->assertSee('KEMBALI KE BERANDA');
+        $response->assertDontSee('SISTEM INFORMASI AKTIF');
     }
 
     public function test_guest_is_redirected_from_admin_dashboard_to_login(): void

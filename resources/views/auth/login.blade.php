@@ -1,13 +1,29 @@
 @extends('layouts.app')
 
 @section('title', 'Login Administrator')
+@section('hide_navbar', true)
+@section('hide_footer', true)
 
 @section('content')
-<div class="min-h-[82vh] flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-tech-950 bg-tech-grid-dark relative overflow-hidden">
+<div class="flex-1 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8 bg-tech-950 bg-tech-grid-dark relative overflow-hidden min-h-screen">
     <!-- Subtle dark gradient overlay -->
     <div class="absolute inset-0 bg-gradient-to-b from-tech-950/80 via-tech-950/95 to-tech-950 pointer-events-none"></div>
 
     <div class="relative max-w-md w-full">
+        <!-- Top Bar Navigation (Kembali ke Beranda) -->
+        <div class="mb-5 flex items-center justify-between">
+            <a href="{{ route('home') }}" class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl text-xs font-mono font-bold tracking-wider text-slate-300 bg-tech-900 hover:bg-amber-500 hover:text-tech-950 border border-tech-800 hover:border-amber-400 transition-all shadow-md group">
+                <svg class="w-4 h-4 transition-transform group-hover:-translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                </svg>
+                <span>KEMBALI KE BERANDA</span>
+            </a>
+            <div class="flex items-center gap-2 text-[11px] font-mono text-slate-500">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                <span>SECURITY GATE</span>
+            </div>
+        </div>
+
         <!-- Card Container -->
         <div class="bg-tech-900 rounded-2xl p-8 sm:p-10 border border-tech-800 shadow-2xl relative overflow-hidden reveal-init">
             <!-- Top Industrial Accent Stripe -->
@@ -15,10 +31,8 @@
 
             <!-- Header Logo & Terminal Title -->
             <div class="text-center mb-8">
-                <div class="w-12 h-12 rounded-xl bg-tech-950 border border-tech-800 flex items-center justify-center text-amber-400 mx-auto mb-4 shadow-inner">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                    </svg>
+                <div class="w-16 h-16 rounded-2xl bg-white p-2 flex items-center justify-center mx-auto mb-4 shadow-lg ring-2 ring-tech-800">
+                    <img src="{{ asset('images/logoskanic2.png') }}" alt="Logo SMKN 1 Ciomas" class="w-full h-full object-contain">
                 </div>
                 <span class="inline-block px-2.5 py-0.5 rounded-xs bg-tech-950 border border-tech-800 text-[10px] font-mono font-bold uppercase tracking-wider text-amber-400 mb-2">
                     SMKN 1 CIOMAS • SECURITY GATE
@@ -94,10 +108,13 @@
                 <span class="block text-slate-300">Password: <span class="text-white">password</span></span>
             </div>
 
-            <!-- Back to Home -->
-            <div class="mt-6 text-center">
-                <a href="{{ route('home') }}" class="text-xs font-mono text-slate-400 hover:text-amber-400 transition-colors">
-                    &larr; Kembali ke Website Publik SMKN 1 Ciomas
+            <!-- Back to Home Button -->
+            <div class="mt-6 pt-4 border-t border-tech-800/80 text-center">
+                <a href="{{ route('home') }}" class="inline-flex items-center justify-center gap-2 w-full py-2.5 px-4 rounded-lg text-xs font-mono font-bold tracking-wider text-slate-300 hover:text-white bg-tech-950/80 hover:bg-tech-950 border border-tech-800 hover:border-slate-700 transition-all">
+                    <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                    </svg>
+                    <span>Kembali ke Halaman Beranda</span>
                 </a>
             </div>
         </div>

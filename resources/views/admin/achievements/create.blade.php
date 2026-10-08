@@ -47,7 +47,7 @@
                     <label for="class" class="block text-xs font-mono font-bold uppercase tracking-wider text-slate-700 mb-1.5">
                         Kelas / Jurusan <span class="text-rose-500">*</span>
                     </label>
-                    <input type="text" name="class" id="class" value="{{ old('class') }}" required placeholder="Contoh: XII RPL 1" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-sans focus:outline-none focus:ring-1 focus:ring-purple-500 focus:border-purple-500 focus:bg-white transition-all">
+                    <input type="text" name="class" id="class" value="{{ old('class') }}" required placeholder="Contoh: XII PPLG 1" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-xs font-sans focus:outline-none focus:ring-1 focus:ring-purple-500 focus:border-purple-500 focus:bg-white transition-all">
                     @error('class') <p class="text-xs font-mono text-rose-500 mt-1">{{ $message }}</p> @enderror
                 </div>
             </div>
