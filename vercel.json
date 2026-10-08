@@ -36,6 +36,7 @@
   "env": {
     "APP_ENV": "production",
     "APP_DEBUG": "true",
+    "DB_CONNECTION": "mysql",
     "APP_CONFIG_CACHE": "/tmp/bootstrap/cache/config.php",
     "APP_EVENTS_CACHE": "/tmp/bootstrap/cache/events.php",
     "APP_PACKAGES_CACHE": "/tmp/bootstrap/cache/packages.php",
