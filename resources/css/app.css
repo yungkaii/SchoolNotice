@@ -48,21 +48,32 @@ html {
     transform: translateY(0);
 }
 
-.reveal-delay-1 { transition-delay: 80ms; }
-.reveal-delay-2 { transition-delay: 160ms; }
-.reveal-delay-3 { transition-delay: 240ms; }
-.reveal-delay-4 { transition-delay: 320ms; }
+.reveal-delay-1 {
+    transition-delay: 80ms;
+}
+
+.reveal-delay-2 {
+    transition-delay: 160ms;
+}
+
+.reveal-delay-3 {
+    transition-delay: 240ms;
+}
+
+.reveal-delay-4 {
+    transition-delay: 320ms;
+}
 
 /* Technical Grid & Dot Patterns (Vocational Aesthetics) */
 .bg-tech-grid {
-    background-image: 
+    background-image:
         linear-gradient(to right, rgba(15, 23, 42, 0.05) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(15, 23, 42, 0.05) 1px, transparent 1px);
     background-size: 28px 28px;
 }
 
 .bg-tech-grid-dark {
-    background-image: 
+    background-image:
         linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
         linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
     background-size: 28px 28px;
@@ -80,13 +91,11 @@ html {
 
 /* Technical Diagonal Hazard / Accent Strip */
 .bg-hazard-strip {
-    background: repeating-linear-gradient(
-        -45deg,
-        rgba(245, 158, 11, 0.15),
-        rgba(245, 158, 11, 0.15) 8px,
-        transparent 8px,
-        transparent 16px
-    );
+    background: repeating-linear-gradient(-45deg,
+            rgba(245, 158, 11, 0.15),
+            rgba(245, 158, 11, 0.15) 8px,
+            transparent 8px,
+            transparent 16px);
 }
 
 /* Custom Scrollbar for Dense Tables and Navigation */
@@ -94,13 +103,16 @@ html {
     width: 5px;
     height: 5px;
 }
+
 .custom-scrollbar::-webkit-scrollbar-track {
     background: rgba(15, 23, 42, 0.05);
 }
+
 .custom-scrollbar::-webkit-scrollbar-thumb {
     background: rgba(100, 116, 139, 0.4);
     border-radius: 9999px;
 }
+
 .custom-scrollbar::-webkit-scrollbar-thumb:hover {
     background: rgba(100, 116, 139, 0.6);
 }
@@ -110,6 +122,7 @@ html {
     0% {
         transform: translate3d(0, 0, 0);
     }
+
     100% {
         transform: translate3d(-50%, 0, 0);
     }
@@ -156,8 +169,17 @@ html {
 
 /* Subtle Shimmer & Pulse Accents */
 @keyframes pulse-subtle {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.75; transform: scale(1.04); }
+
+    0%,
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+
+    50% {
+        opacity: 0.75;
+        transform: scale(1.04);
+    }
 }
 
 .animate-pulse-subtle {

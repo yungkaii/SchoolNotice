@@ -1,0 +1,9 @@
+.git
+.github
+.env
+.env.*
+tests/
+phpunit.xml
+*.zip
+vendor/
+node_modules/
